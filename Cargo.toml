@@ -1,0 +1,48 @@
+[package]
+name = "ispc-tex"
+version = "0.1.0"
+authors = ["Legion Labs <devs@legionlabs.com>"]
+description = "Rust bindings for Intel's ISPC texture compressor."
+homepage = "https://github.com/legion-labs/ispc-tex-rs"
+repository = "https://github.com/legion-labs/ispc-tex-rs"
+documentation = "https://docs.rs/ispc-tex-rs"
+readme = "README.md"
+keywords = ["texture", "image", "compress", "intel", "ispc"]
+categories = ["rendering", "rendering::engine", ]
+license = "MIT/Apache-2.0"
+build = "build.rs"
+include = [
+    "src/bc1.rs",
+    "src/bc3.rs",
+    "src/bc6h.rs",
+    "src/bc7.rs",
+    "src/lib.rs",
+    "src/ispc/kernel.rs",
+    "src/ispc/kernelx86_64-pc-windows-msvc.lib",
+    "src/ispc/libkernelx86_64-unknown-linux-gnu.a",
+    "build.rs",
+    "Cargo.toml",
+]
+edition = "2021"
+
+[badges]
+maintenance = { status = "actively-developed" }
+
+[dependencies]
+ispc_rt = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection" }
+
+[build-dependencies]
+ispc_compile = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection", optional = true }
+ispc_rt = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection" }
+
+[features]
+ispc = ["ispc_compile"]
+
+[dev-dependencies]
+ddsfile = "0.2.3"
+image = "0.21.0"
+
+[profile.release]
+lto = true
+opt-level = 3
+codegen-units = 1
