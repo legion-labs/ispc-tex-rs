@@ -8,10 +8,10 @@ RUN apt update \
  && apt clean \
  && apt autoremove
 
-WORKDIR /usr/src/intel-tex
+WORKDIR /usr/src/ispc-tex-rs
 
 # Extract ISPC binary and install it
-RUN wget -O protoc.zip https://github.com/ispc/ispc/releases/download/v1.17.0/ispc-v1.17.0-linux.tar.gz \
+RUN wget -O ispc-v1.17.0-linux.tar.gz https://github.com/ispc/ispc/releases/download/v1.17.0/ispc-v1.17.0-linux.tar.gz \
  && tar -xvzf ispc-v1.17.0-linux.tar.gz \
  && cd ispc-v1.17.0-linux \
  && cp ./bin/ispc /usr/local/bin/ispc \
