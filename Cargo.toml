@@ -29,11 +29,11 @@ edition = "2021"
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-ispc_rt = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection" }
+ispc_rt = "1.0.6"
 
 [build-dependencies]
-ispc_compile = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection", optional = true }
-ispc_rt = { git = "https://github.com/legion-labs/ispc-rs.git", branch = "cargo-change-detection" }
+ispc_compile = { version = "1.0.12", optional = true }
+ispc_rt = "1.0.6"
 
 [features]
 ispc = ["ispc_compile"]
