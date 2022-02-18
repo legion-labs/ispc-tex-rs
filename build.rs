@@ -11,7 +11,6 @@ fn compile_kernel() {
     ispc_compile::Config::new()
         .file("vendor/ispc_texcomp/kernel.ispc")
         .opt_level(2)
-        .optimization_opt(ispc_compile::OptimizationOpt::FastMath)
         .woff()
         .target_isas(vec![
             TargetISA::SSE2i32x4,
